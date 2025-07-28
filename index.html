@@ -19,6 +19,66 @@ body {
 body {
   font-size: 20px; /* atau 20px sesuai kebutuhan */
 }
+/* ===== STYLE UTAMA UNTUK PAGE2 (Desktop) ===== */
+#page2 h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.shop-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.shop-links a {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  padding: 12px 24px;
+  text-decoration: none;
+  background-color: #fff;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  width: 80%;
+  max-width: 500px;
+}
+
+.shop-links a:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.02);
+}
+
+.shop-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+/* ===== RESPONSIVE UNTUK HP (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  #page2 h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .shop-links a {
+    font-size: 1.2rem;
+    padding: 10px 16px;
+  }
+
+  .shop-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+}
+
 /* ===== DESKTOP DEFAULT ===== */
 #page1 .logo {
   width: 180px;
