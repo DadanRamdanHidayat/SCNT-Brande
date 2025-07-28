@@ -1,181 +1,309 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>SCNT Parfume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
- <style>
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: #f4cbd0;
-    color: #000;
-  }
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #000;
-    color: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  header img {
-    height: 40px;
-  }
-  nav a {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  nav a:hover {
-    text-decoration: underline;
-  }
-  section {
-    padding: 5rem 2rem;
-  }
-  .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* vertikal */
-    align-items: center;     /* horizontal */
-    text-align: center;
-    height: 100vh;           /* penuh satu layar */
-    background-color: #f9cdd1; /* warna pink yang kamu pakai */
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem; /* Ubah dari 3rem ke 5rem */
-    font-weight: bold;
-    margin: 0; /* optional: menghilangkan margin default */
-  }
-  .hero p {
-    font-size: 1.5rem; /* Paragraf lebih jelas */
-    max-width: 600px; /* optional: membatasi lebar paragraf */
-    margin-top: 1rem; /* jarak dari judul */
-    text-align: justify; /* teks rata kiri-kanan */
-  }
-  .hero button {
-    background-color: #000;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    margin-top: 1rem;
-    cursor: pointer;
-  }
-  footer {
-    background-color: #000;
-    color: white;
-    text-align: center;
-    padding: 2rem;
-  }
-  .produk-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  .produk-card {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  .produk-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  .produk-card h3 {
-    margin: 0.8rem 0 0.4rem;
-    font-size: 1.1rem;
-  }
-  .produk-card p {
-    margin: 0;
-    color: #555;
-  }
-  .produk-card button {
-    margin-top: 0.8rem;
-    background-color: #000;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 6px;
-  }
-  .logo-hero {
-    height: 60px;
-    margin-bottom: 1.5rem;
-  }
-  .hero img {
-  height: 300px; /* Ukuran lebih kecil, bisa disesuaikan */
-  width: auto;
-  margin-bottom: 1.5rem;
+  <style>
+/* ===== GLOBAL STYLES ===== */
+/* Mengatur tampilan dasar body */
+body {
+  margin: 0; /* Menghapus margin default browser */
+  font-family: 'Segoe UI', sans-serif; /* Mengatur font utama */
+  background-color: #f4cbd0; /* Warna latar belakang keseluruhan halaman */
+  color: #333; /* Warna teks default */
+  text-align: center; /* Menengahkan semua teks */
+}
+body {
+  font-family: 'Playfair Display', serif; /* Override font ke Playfair Display */
 }
 
-  .sosmed-link img {
-    width: 150px;       /* Ukuran kecil */
-    height: 150px;      /* Biar proporsional */
-    object-fit: contain;
-    transition: transform 0.2s ease;
-  }
+/* ===== BUTTON STYLE UMUM ===== */
+/* Gaya dasar semua tombol */
+.btn,
+.buy-button,
+.produk-card button {
+  background-color: #ff4f91; /* Warna latar belakang pink */
+  color: white; /* Warna teks putih */
+  border: none; /* Menghapus border default */
+  cursor: pointer; /* Kursor berubah saat hover */
+  border-radius: 25px; /* Membulatkan ujung tombol */
+  padding: 12px 30px; /* Padding dalam tombol */
+  font-size: 1rem; /* Ukuran font */
+  text-decoration: none; /* Menghapus underline (untuk <a>) */
+}
 
-  .sosmed-link img:hover {
-    transform: scale(1.2); /* Efek hover membesar sedikit */
-  }
+/* Gaya tombol dalam kartu produk */
+.produk-card button {
+  padding: 0.5rem 1rem; /* Padding lebih kecil */
+  border-radius: 6px; /* Sudut sedikit membulat */
+  margin-top: 0.5rem; /* Jarak atas */
+  background-color: #333; /* Warna latar abu gelap */
+}
 
-  #kontak {
-    text-align: center;
-    padding: 2rem;
-    background-color: #111;
-    color: white;
-  }
+/* Gaya tombol beli versi kecil */
+.buy-button {
+  font-size: 0.8rem; /* Ukuran font lebih kecil */
+  padding: 6px 12px; /* Padding kecil */
+  border-radius: 5px; /* Sudut sedikit membulat */
+  margin-top: 8px; /* Jarak atas */
+}
 
-  #kontak h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
+/* ===== LOGO DAN TAGLINE ===== */
+.logo {
+  width: 100px; /* Ukuran logo */
+}
 
-  #kontak p {
-    margin-bottom: 1rem;
-  }
-</style>
+.tagline {
+  font-size: 1.2rem; /* Ukuran tagline */
+  margin: 10px 0 30px; /* Jarak atas dan bawah */
+}
 
+/* ===== HERO SECTION (Halaman Awal) ===== */
+.hero-section {
+  background-color: transparent; /* Latar belakang transparan */
+  padding: 50px 20px; /* Padding atas bawah dan samping */
+  text-align: center; /* Semua teks rata tengah */
+  font-weight: 900; /* >>> Tambahan: semua teks di dalamnya sangat tebal */
+}
 
+.hero-logo {
+  width: 150px; /* Ukuran logo */
+  margin-bottom: 20px; /* Jarak bawah dari logo */
+}
+
+.hero-title {
+  font-size: 5rem; /* Ukuran besar untuk judul utama */
+  font-weight: 900; /* Ditebalkan maksimal */
+  margin: 0;
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  font-weight: 900; /* Ditebalkan maksimal */
+  margin: 10px 0;
+}
+
+.hero-brand {
+  font-weight: 900; /* Tambahan: pastikan ini juga bold */
+  font-size: 2rem;
+  margin-top: 10px;
+}
+
+/* ===== SECTION UMUM ===== */
+.landing {
+  padding: 100px 20px; /* Jarak dalam bagian landing */
+}
+
+.hidden {
+  display: none; /* Menyembunyikan elemen */
+}
+
+/* ===== SHOP LINKS (Tautan Market) ===== */
+.shop-links {
+  display: flex; /* Mengatur sebagai flexbox */
+  flex-direction: column; /* Tata letak kolom */
+  gap: 10px; /* Jarak antar elemen */
+  align-items: start; /* Sejajarkan ke kiri */
+  margin-top: 1rem; /* Jarak atas */
+}
+
+.shop-links a {
+  text-decoration: none; /* Hapus garis bawah */
+  color: #333; /* Warna teks */
+  font-size: 1rem; /* Ukuran teks */
+  display: flex; /* Flexbox untuk ikon dan teks */
+  align-items: center; /* Sejajarkan vertikal */
+  gap: 10px; /* Jarak antara ikon dan teks */
+  background: #fff; /* Latar putih */
+  padding: 15px; /* Padding dalam kotak */
+  margin: 10px auto; /* Jarak luar dan tengah */
+  width: 80%; /* Lebar relatif */
+  max-width: 400px; /* Batas lebar */
+  border-radius: 15px; /* Sudut membulat */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Bayangan lembut */
+}
+
+.shop-links a:hover {
+  color: #007bff; /* Warna teks saat hover */
+}
+
+.shop-icon {
+  width: 20px; /* Ukuran ikon */
+  height: 20px;
+  object-fit: contain; /* Jaga rasio */
+}
+
+/* ===== PROFILE SECTION ===== */
+.profile-section {
+  margin-top: 50px; /* Jarak atas */
+  padding: 0 20px; /* Padding samping */
+}
+
+.profile-section h2 {
+  color: #4b1c2d; /* Warna teks judul */
+  font-weight: bold; /* Tebal */
+  font-size: 1.5rem; /* Ukuran sedang */
+  margin-bottom: 20px; /* Jarak bawah */
+}
+
+/* ===== PRODUCT GALLERY ===== */
+.product-gallery,
+.produk-unggulan {
+  display: flex; /* Flexbox */
+  flex-wrap: wrap; /* Agar bisa turun baris */
+  justify-content: center; /* Tengah */
+  gap: 20px; /* Jarak antar produk */
+  margin-top: 30px; /* Jarak atas */
+  padding: 2rem; /* Padding dalam */
+}
+
+.product,
+.produk-card {
+  background: white; /* Latar putih */
+  border-radius: 15px; /* Sudut membulat */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Bayangan lembut */
+  width: 220px; /* Lebar tetap */
+  padding: 15px; /* Padding isi */
+  text-align: center; /* Tengah */
+  transition: transform 0.2s; /* Animasi saat hover */
+}
+
+.product img,
+.produk-card img {
+  width: 100%; /* Full lebar */
+  border-radius: 10px; /* Sudut gambar membulat */
+  object-fit: cover; /* Gambar menyesuaikan tanpa distorsi */
+  height: auto; /* Tinggi otomatis */
+}
+
+.product p,
+.produk-card p {
+  margin-top: 10px; /* Jarak atas */
+  color: #333; /* Warna teks */
+  font-weight: 500; /* Tebal sedang */
+}
+
+/* ===== PRODUK GRID RESPONSIF ===== */
+.produk-section {
+  padding: 2rem; /* Padding isi */
+  background-color: #f9f9f9; /* Latar abu muda */
+  text-align: center; /* Tengah */
+}
+
+.produk-grid {
+  display: grid; /* Grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Grid responsif */
+  gap: 1.5rem; /* Jarak antar item */
+  justify-items: center; /* Tengahkan isi */
+  margin-top: 1rem; /* Jarak atas */
+}
+
+.produk-card {
+  width: 170px; /* Lebar tetap */
+  border-radius: 12px; /* Sudut membulat */
+  padding: 1rem; /* Padding isi */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Bayangan */
+}
+
+.produk-card:hover {
+  transform: translateY(-5px); /* Efek naik saat hover */
+}
+
+/* ===== MINI PRODUCT CARD (Jika Digunakan Tambahan) ===== */
+.product-container {
+  display: flex; /* Flexbox */
+  flex-wrap: wrap; /* Bisa turun baris */
+  justify-content: center; /* Tengah */
+  gap: 20px; /* Jarak antar elemen */
+}
+
+.product-card {
+  width: 150px; /* Lebar tetap */
+  background-color: #fff; /* Latar putih */
+  border-radius: 15px; /* Sudut membulat */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Bayangan lembut */
+  padding: 10px; /* Padding isi */
+  text-align: center; /* Tengah */
+  transition: transform 0.2s; /* Efek hover */
+}
+
+.product-card:hover {
+  transform: scale(1.05); /* Perbesar saat hover */
+}
+
+.product-card img {
+  width: 100%; /* Gambar penuh */
+  border-radius: 10px; /* Sudut membulat */
+  height: auto; /* Tinggi otomatis */
+}
+
+.product-card h3 {
+  font-size: 0.95rem; /* Ukuran teks */
+  margin: 10px 0 5px; /* Margin atas dan bawah */
+}
+
+.product-card p {
+  font-size: 0.9rem; /* Ukuran lebih kecil */
+  margin: 0; /* Hilangkan margin */
+  color: #333; /* Warna teks */
+}
+
+  </style>
 </head>
 <body>
-  <!-- Header dengan menu navigasi -->
-  <header>
-    <img src="logo1.png" alt="SCNT Parfume">
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#produk">Produk</a>
-      <a href="#tentang">Tentang</a>
-      <a href="#kontak">Kontak</a>
-    </nav>
-  </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero flex flex-col items-center justify-center text-center h-screen bg-pink-200">
-     <img src="logo1.png" alt="Logo SCNT" class="w-32 mb-4"> <!-- Ganti nama file dengan yang kamu pakai -->
-     <h1 class="text-6xl font-bold">Luxury in Every Drop</h1>
-     <p class="text-xl mt-4">Temukan aroma khas yang mencerminkan kepribadian Anda.</p>
-     <button class="mt-6 bg-black text-white px-6 py-2 rounded">Belanja Sekarang</button>
-  </section>
+  <!-- 🔷 Halaman Pertama (Landing Page) -->
+  <div class="landing" id="page1">
+    <img src="logo1.png" class="logo" alt="SCNT Logo">
+    <h1>SCNT Parfume</h1>
+    <p class="tagline">Keharuman elegan untuk pria & wanita modern</p>
+    <p>Launching 28 Februari 2025, 15.00 WIB</p>
+    <!-- Tombol masuk ke halaman selanjutnya -->
+    <button class="btn" onclick="showPage2()">Masuk Website</button>
+  </div>
 
+  <!-- 🔷 Halaman Kedua (Daftar Marketplace) -->
+  <div class="landing hidden" id="page2">
+    <h2>Temukan SCNT Parfume di</h2>
 
-  <!-- Produk Section -->
-  <section id="produk">
+    <!-- Link ke toko online resmi -->
+    <div class="shop-links">
+      <a href="https://id.shp.ee/u5CNMm4/SCNTtparfume" target="_blank">
+        <img src="shopee.png" alt="Shopee" class="shop-icon"> Shopee Official
+      </a>
+      <a href="https://tokopedia.com/SCNTparfume" target="_blank">
+        <img src="tokopedia.png" alt="Tokopedia" class="shop-icon"> Tokopedia Official
+      </a>
+      <a href="https://tiktok.com/@scntparfume" target="_blank">
+        <img src="tiktok.png" alt="TikTok" class="shop-icon"> TikTok Shop
+      </a>
+      <a href="https://www.instagram.com/scnt.parfume?utm_source=ig_web_button_share_sheet&igsh=M3V4M24xbmtiNGVs/SCNTparfume/" target="_blank">
+        <img src="instagram.png" alt="Instagram" class="shop-icon"> Instagram
+      </a>
+      <!-- Link ke halaman profil produk -->
+      <a href="#" onclick="showProfile()">
+        <img src="logo1.png" alt="Profile" class="shop-icon"> Profile
+      </a>
+    </div>
+  </div>
+
+  <!-- 🔷 Halaman Ketiga (Profil Produk) -->
+  <div class="landing hidden" id="profilePage">
+    <h2>Profil Produk SCNT</h2>
+
+   <!-- Hero Section Profil SCNT -->
+<div class="hero-section">
+  <img src="logo1.png" alt="Logo SCNT" class="hero-logo">
+  <h1 class="hero-brand">SCNT</h1>
+  <h2 class="hero-title">Luxury in Every Drop</h2>
+  <p class="hero-subtitle">
+    Temukan aroma khas yang mencerminkan<br>
+    kepribadian Anda.
+  </p>
+</div>
+
+  <!-- ⬇️ Produk Unggulan SCNT -->
+ <section id="produk">
     <h2>Produk Unggulan</h2>
     <div class="produk-grid">
       <div class="produk-card">
@@ -271,12 +399,6 @@
       <div class="produk-card">
         <img src="scnt16.jpeg" alt="Parfume 2">
         <h3>Parfume Segar</h3>
-        <p>Rp 220.000</p>
-        <button>Beli Sekarang</button>
-      </div>
-      <div class="produk-card">
-        <img src="scnt17.jpeg" alt="Parfume 3">
-        <h3>Parfume Romantis</h3>
         <p>Rp 220.000</p>
         <button>Beli Sekarang</button>
       </div>
@@ -609,41 +731,41 @@
     <!-- Tambahkan daftar produk di sini -->
   </section>
 
-  <!-- Tentang Section -->
-  <section id="tentang">
-    <h2>Tentang SCNT Parfume</h2>
-    <p>SCNT Parfume adalah brand lokal Indonesia yang menghadirkan parfum dengan karakter wangi khas, elegan, dan tahan lama yang dirancang khusus untuk pria dan wanita modern. Dengan menggabungkan kualitas bahan pilihan dan proses produksi yang terstandarisasi, SCNT Parfume menghadirkan sensasi aroma premium dengan harga yang tetap terjangkau.
+  <button class="btn" onclick="backToLinks()">Kembali</button>
+</div>
 
-Kami percaya bahwa parfum bukan sekadar pelengkap penampilan, tetapi cerminan dari kepribadian. Oleh karena itu, setiap varian aroma kami diciptakan untuk menemani aktivitas harian, momen spesial, hingga gaya hidup aktif masyarakat urban.
+  <script>
+ // Fungsi untuk menampilkan halaman kedua (daftar marketplace SCNT)
+function showPage2() {
+  // Sembunyikan halaman pertama (landing page)
+  document.getElementById("page1").classList.add("hidden");
 
-SCNT Parfume berkomitmen menjadi bagian dari perjalanan personal kamu dalam mengekspresikan diri melalui aroma, sekaligus membuktikan bahwa brand lokal mampu bersaing dengan kualitas internasional.</p>
-  </section>
+  // Tampilkan halaman kedua (link marketplace)
+  document.getElementById("page2").classList.remove("hidden");
 
- <!-- Kontak Section -->
-<section id="kontak" style="text-align: center; padding: 2rem; background-color: #111; color: white;">
-  <h2>Hubungi Kami</h2>
-  <p>Email: info@scntparfume.com<br>Instagram: @scntparfume</p>
+  // Pastikan halaman profil produk tetap disembunyikan
+  document.getElementById("profilePage").classList.add("hidden");
+}
 
-  <!-- Ikon Media Sosial -->
-  <div class="sosmed-container">
-    <a href="https://wa.me/6285772622912" target="_blank" class="sosmed-link">
-      <img src="WA.png" alt="WhatsApp" />
-    </a>
-    <a href="https://id.shp.ee/u5CNMm4/scntparfume" target="_blank" class="sosmed-link">
-      <img src="shopee.png" alt="Shopee" />
-    </a>
-    <a href="https://www.instagram.com/scnt.parfume" target="_blank" class="sosmed-link">
-      <img src="instagram.png" alt="Instagram" />
-    </a>
-  </div>
-</section>
+// Fungsi untuk menampilkan halaman profil produk
+function showProfile() {
+  // Sembunyikan halaman kedua (link marketplace)
+  document.getElementById("page2").classList.add("hidden");
 
-</section>
+  // Tampilkan halaman profil produk
+  document.getElementById("profilePage").classList.remove("hidden");
+}
 
+// Fungsi untuk kembali dari halaman profil ke halaman marketplace
+function backToLinks() {
+  // Sembunyikan halaman profil produk
+  document.getElementById("profilePage").classList.add("hidden");
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 SCNT Parfume. All rights reserved.</p>
-  </footer>
+  // Tampilkan kembali halaman kedua (link marketplace)
+  document.getElementById("page2").classList.remove("hidden");
+}
+
+  </script>
 </body>
+
 </html>
